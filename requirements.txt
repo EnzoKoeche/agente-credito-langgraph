@@ -1,0 +1,32 @@
+# agente-credito-langgraph — dependencias pinadas
+# Alvo de execucao: Python 3.12 (RNF-09). Validado localmente em Python 3.14.4;
+# todas as libs abaixo suportam 3.12+ e 3.14. Versoes pinadas a partir de um
+# ambiente instalado e testado (pytest verde).
+
+# --- Orquestracao (o ponto do projeto) ---
+langgraph==1.2.4
+langgraph-checkpoint-sqlite==3.1.0   # SqliteSaver (checkpointing por thread_id)
+
+# --- LLM (caminho real; nos testes/demo usa-se extrator mock injetavel) ---
+langchain-anthropic==1.4.5
+
+# --- Modelagem / validacao ---
+pydantic==2.13.4
+
+# --- Ingestao ---
+pypdf==6.13.2                        # deteccao de camada de texto / extracao de PDF
+pillow==12.2.0                       # manipulacao de imagem (entrada de OCR)
+
+# --- Config ---
+python-dotenv==1.2.2
+
+# --- Testes ---
+pytest==9.0.3
+pytest-cov==7.1.0
+
+# --- OCR (OPCIONAL) ---
+# OCR real exige o binario do sistema `tesseract` + o wrapper Python abaixo.
+# Sem eles, o agente usa um OcrEngine no-op/injetavel (modo demo).
+#   Ubuntu/WSL:  sudo apt-get install tesseract-ocr tesseract-ocr-por
+#   pip:         pip install pytesseract==0.3.13
+# pytesseract==0.3.13

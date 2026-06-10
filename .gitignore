@@ -1,0 +1,45 @@
+# === Ambiente Python ===
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# === Testes / cobertura ===
+.pytest_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# === Segredos (NUNCA commitar) ===
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets/
+
+# === Checkpoints / dados de runtime ===
+*.sqlite
+*.sqlite3
+*.sqlite-journal
+checkpoints*.db
+*.db-wal
+*.db-shm
+
+# === Artefatos de eval brutos (RESULTS.md curado fica versionado) ===
+eval/results/raw/
+eval/results/*.jsonl
+
+# === OS / editores ===
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
