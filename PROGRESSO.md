@@ -54,3 +54,24 @@ Espelha o log do Notion. Datas absolutas.
 
 ### Próximo passo
 - Aguardando OK do Enzo para a **Fase 2** (Langfuse + streaming no front + Streamlit + implementar todas as evals do `plano_eval.md`).
+
+---
+
+## 2026-06-10 — Fase 2 (parcial): evals determinísticas grátis
+
+### O que foi feito
+- **Harness de eval** em `eval/`: `oracle.py` (gabarito independente das regras), `datasets_build.py` + datasets JSON versionados, `runner_det.py`/`runner_grafo.py` (exercitam o código de **produção**), `run_all.py` → `results/RESULTS.md` curado.
+- **9 evals verdes, custo US$ 0,00** (extrator mock): `EVAL-DET-01..07` (consistente/média/alta/dado ausente/baixa confiança/simulação/bordas 0,30·0,50), `EVAL-G2` (roteamento e1/e2/e3, 17/17), `EVAL-G1` (retomada pós-interrupt, hash idêntico).
+- Evals **integradas ao pytest** (`tests/test_evals.py`) → CI pega regressão de regra. Suite agora **60 testes**.
+- **Fix de forward-compat:** `persistence.py` registra os tipos do estado no serde do checkpoint → elimina o aviso de "unregistered type" do LangGraph (que seria bloqueado em versões futuras).
+
+### Decisões tomadas
+- Entrada da Fase 2 = **evals grátis primeiro** (zero custo, fecha a coluna `EVAL-*` da rastreabilidade sem gastar). `EVAL-PAGA-*` (alucinação/injeção/PII fim-a-fim) ficam para depois, com guard de custo.
+- Gabarito via **oracle independente** (re-enuncia a regra) para não ser circular; caveat honesto onde oracle e produção coincidem por construção (Price/confiança = prova de **regressão**, não de correção independente).
+
+### Commits
+- `e159fc9` feat(persistence): checkpointer com serde dos tipos do estado
+- `291b969` feat(eval): harness de evals determinísticas gratuitas (EVAL-DET-01..07, G1, G2)
+
+### Próximo passo
+- Decidir continuação da Fase 2: front **Streamlit** (upload → progresso do grafo em tempo real → revisão HITL → auditoria), observabilidade **Langfuse**, e/ou **evals pagas** (com guard `--sanity` e custo estimado avisado antes).
