@@ -29,3 +29,28 @@ Espelha o log do Notion. Datas absolutas.
 
 ### Próximo passo
 - Revisão dos 6 docs pelo Enzo → **OK explícito** → Fase 1 (esqueleto do grafo: estado tipado Pydantic, nós, arestas condicionais, `SqliteSaver`, `interrupt`).
+
+---
+
+## 2026-06-10 — Fase 1: Esqueleto do grafo
+
+### O que foi feito
+- **Ambiente:** venv com stack pinada em `requirements.txt` — `langgraph 1.2.4`, `langgraph-checkpoint-sqlite 3.1.0`, `langchain-anthropic 1.4.5`, `pydantic 2.13.4`, `pytest 9.0.3`. (Ambiente real tem Python 3.14; alvo documentado é 3.12 — caveat RNF-09.)
+- **Pacote** `src/agente_credito/`: `state.py` (AnalysisState + submodelos Pydantic), `config.py` (limiares 0,30/0,50/0,6 + versão prompt/modelo), `tools/` (indicadores e inconsistências determinísticas), `security/` (PII + anti-injeção), `extraction/` (extrator injetável: Mock/Anthropic), `ocr/` (engine pluggable: Noop/Tesseract), `ingestion/` (detecção de formato), `deps.py`, `nodes.py` (9 nós + 3 roteadores), `graph.py` (montagem + `build_demo_graph`).
+- **Grafo LangGraph:** nós n1..n8 + `ocr`; arestas condicionais e1 (OCR), e2 (baixa confiança → escalação), e3 (aprovado/devolvido); **interrupt** dinâmico na revisão humana; **SqliteSaver** retomável por `thread_id`; streaming `updates`.
+- **Testes:** 51 passando; **cobertura das tools = 100%** (RNF-05). Inclui retomada com estado idêntico (RNF-06), roteamento e1/e2/e3, modo demo sem API, streaming, PII e anti-injeção.
+- **Revisão adversarial** (workflow de 3 revisores + verificação): 14 achados, 10 confirmados. Corrigidos os 3 importantes (robustez de float na borda 0,30; mascaramento do motivo humano na auditoria; mascaramento de nome com fronteiras de palavra) + hardening (fail-safe em `roteia_revisao`, detecção de injeção/PII ampliada, cobertura do ramo OCR e ordem de streaming). 1 menor deferido e documentado (CPF cru no checkpoint — sem vazamento ativo).
+
+### Decisões tomadas
+- Escopo Fase 1 = núcleo do grafo + tools + testes. **Observabilidade (Langfuse), front Streamlit e as evals (`EVAL-*`) são Fase 2.**
+- LLM e OCR **injetáveis** → modo demo roda o fluxo inteiro sem custo de API; os testes nunca tocam a API paga.
+- `interrupt` dinâmico (`langgraph.types.interrupt` + `Command(resume=...)`) em vez de `interrupt_before`.
+
+### Commits (locais — push é Fase 3, após secret-scan do histórico)
+- `5ae07e2` chore: bootstrap do repo + docs da Fase 0
+- `88243ea` feat(core): estado tipado, tools deterministicas e seguranca + testes
+- `2f230cb` feat(grafo): LangGraph com arestas condicionais, interrupt HITL e checkpointing
+- `e007569` fix(revisao): corrige achados da revisao adversarial da Fase 1
+
+### Próximo passo
+- Aguardando OK do Enzo para a **Fase 2** (Langfuse + streaming no front + Streamlit + implementar todas as evals do `plano_eval.md`).
