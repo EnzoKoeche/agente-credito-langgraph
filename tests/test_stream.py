@@ -2,9 +2,8 @@
 
 from __future__ import annotations
 
-from langgraph.checkpoint.sqlite import SqliteSaver
-
 from agente_credito.graph import build_demo_graph
+from agente_credito.persistence import sqlite_checkpointer
 from agente_credito.state import AnalysisState, Documento, Formato
 
 
@@ -12,7 +11,7 @@ def test_stream_updates_emite_progresso_dos_nos(dados_consistentes):
     docs = [Documento(nome="ficha.txt", formato=Formato.TXT, conteudo="x")]
     cfg = {"configurable": {"thread_id": "s-1"}}
     vistos: list[str] = []
-    with SqliteSaver.from_conn_string(":memory:") as cp:
+    with sqlite_checkpointer(":memory:") as cp:
         app = build_demo_graph(dados_consistentes, checkpointer=cp)
         for evento in app.stream(
             AnalysisState(documentos=docs), cfg, stream_mode="updates"

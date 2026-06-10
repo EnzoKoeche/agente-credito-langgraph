@@ -6,17 +6,17 @@ Command(resume=...), checando indicadores, pre-parecer, auditoria e PII mascarad
 
 from __future__ import annotations
 
-from langgraph.checkpoint.sqlite import SqliteSaver
 from langgraph.types import Command
 
 from agente_credito.graph import build_demo_graph
+from agente_credito.persistence import sqlite_checkpointer
 from agente_credito.state import AnalysisState, Documento, Formato
 
 
 def test_demo_fluxo_completo(dados_consistentes):
     docs = [Documento(nome="ficha.txt", formato=Formato.TXT, conteudo="dados do cliente")]
     cfg = {"configurable": {"thread_id": "demo-1"}}
-    with SqliteSaver.from_conn_string(":memory:") as cp:
+    with sqlite_checkpointer(":memory:") as cp:
         app = build_demo_graph(dados_consistentes, checkpointer=cp)
         r1 = app.invoke(AnalysisState(documentos=docs), cfg)
         assert "__interrupt__" in r1  # pausou na revisao humana (HITL)
@@ -46,7 +46,7 @@ def test_demo_fluxo_completo(dados_consistentes):
 def test_demo_devolvido(dados_consistentes):
     docs = [Documento(nome="ficha.txt", formato=Formato.TXT, conteudo="x")]
     cfg = {"configurable": {"thread_id": "demo-dev"}}
-    with SqliteSaver.from_conn_string(":memory:") as cp:
+    with sqlite_checkpointer(":memory:") as cp:
         app = build_demo_graph(dados_consistentes, checkpointer=cp)
         app.invoke(AnalysisState(documentos=docs), cfg)
         final = app.invoke(
@@ -62,7 +62,7 @@ def test_motivo_humano_e_mascarado(dados_consistentes):
     # Texto livre do revisor pode conter PII -> deve ser mascarado na auditoria (RF-11)
     docs = [Documento(nome="ficha.txt", formato=Formato.TXT, conteudo="x")]
     cfg = {"configurable": {"thread_id": "demo-pii"}}
-    with SqliteSaver.from_conn_string(":memory:") as cp:
+    with sqlite_checkpointer(":memory:") as cp:
         app = build_demo_graph(dados_consistentes, checkpointer=cp)
         app.invoke(AnalysisState(documentos=docs), cfg)
         final = app.invoke(
@@ -78,7 +78,7 @@ def test_ramo_ocr_executa_no_grafo(dados_consistentes):
     # Documento imagem dispara a aresta e1 -> no_ocr -> extracao (NoopOcrEngine)
     docs = [Documento(nome="rg.png", formato=Formato.IMAGEM, conteudo="texto ja rasterizado")]
     cfg = {"configurable": {"thread_id": "demo-ocr"}}
-    with SqliteSaver.from_conn_string(":memory:") as cp:
+    with sqlite_checkpointer(":memory:") as cp:
         app = build_demo_graph(dados_consistentes, checkpointer=cp)
         app.invoke(AnalysisState(documentos=docs), cfg)
         final = app.invoke(

@@ -10,10 +10,10 @@ from __future__ import annotations
 import hashlib
 import json
 
-from langgraph.checkpoint.sqlite import SqliteSaver
 from langgraph.types import Command
 
 from agente_credito.graph import build_demo_graph
+from agente_credito.persistence import sqlite_checkpointer
 from agente_credito.state import AnalysisState, Documento, Formato
 
 _CAMPOS_ESTAVEIS = (
@@ -40,7 +40,7 @@ def test_retomada_restaura_estado_identico(dados_consistentes, tmp_path):
     cfg = {"configurable": {"thread_id": "t-resume"}}
 
     # Sessao 1: roda ate o interrupt e encerra
-    with SqliteSaver.from_conn_string(db) as cp:
+    with sqlite_checkpointer(db) as cp:
         app = build_demo_graph(dados_consistentes, checkpointer=cp)
         app.invoke(AnalysisState(documentos=docs), cfg)
         snap1 = app.get_state(cfg)
@@ -48,7 +48,7 @@ def test_retomada_restaura_estado_identico(dados_consistentes, tmp_path):
         assert snap1.next  # ha no pendente (pausado no interrupt)
 
     # Sessao 2: reabre o MESMO arquivo -> estado identico -> retoma e conclui
-    with SqliteSaver.from_conn_string(db) as cp2:
+    with sqlite_checkpointer(db) as cp2:
         app2 = build_demo_graph(dados_consistentes, checkpointer=cp2)
         snap2 = app2.get_state(cfg)
         h2 = _hash_estado(snap2.values)
