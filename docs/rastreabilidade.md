@@ -2,11 +2,12 @@
 
 Esta matriz conecta, de ponta a ponta, cada requisito do projeto **agente-credito-langgraph** aos artefatos que o realizam (casos de uso), o executam (nos do grafo LangGraph) e o comprovam (evals e testes pytest). O objetivo e garantir que nenhum requisito fique orfao: todo requisito funcional aponta para **pelo menos um eval OU um teste pytest**, e todo requisito nao-funcional possui uma verificacao associada. A convencao de status segue tres estados progressivos: **planejado** (especificado, ainda nao implementado — estado inicial de todas as celulas de eval/teste deste documento), **implementado** (artefato existe e executa) e **verificado** (artefato executa e passa, comprovando o requisito). Enquanto o codigo nao for escrito, todas as celulas de verificacao permanecem como **planejado**.
 
-> **Status (Fase 1, 2026-06-10):** os testes pytest (`TEST-*`) estao **implementados e verdes** —
-> 51 testes passando, cobertura das tools deterministicas = 100% (RNF-05). As evals (`EVAL-*`,
-> com datasets e runners proprios) seguem **planejadas** para a Fase 2. Logo, nas tabelas abaixo, a
-> coluna *Teste(s) pytest* ja pode ser lida como **verificada**, enquanto a coluna *Eval(s)*
-> permanece *planejada*. A coluna Status reflete o item ainda nao 100% fechado (evals pendentes).
+> **Status (2026-06-10):** os testes pytest (`TEST-*`) estao **implementados e verdes** — 60 testes,
+> cobertura das tools deterministicas = 100% (RNF-05). As evals **gratuitas** — `EVAL-DET-01..07`,
+> `EVAL-G1` e `EVAL-G2` — tambem estao **implementadas e verdes** (gabarito do oracle independente;
+> ver `eval/results/RESULTS.md`). Restam **planejadas** apenas as evals **pagas** (`EVAL-PAGA-HALU`,
+> `EVAL-PAGA-INJ`, `EVAL-PAGA-PII`), reservadas para a Fase 2 com guard de custo. Logo, nas tabelas
+> abaixo, *Teste(s) pytest* e os `EVAL-DET-*`/`EVAL-G*` ja podem ser lidos como **verificados**.
 
 ## Matriz principal: RF -> UC -> No(s) do grafo -> Eval(s) -> Teste(s) pytest -> Status
 

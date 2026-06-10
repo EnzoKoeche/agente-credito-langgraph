@@ -15,7 +15,7 @@ dependencies = []  # versoes pinadas em requirements.txt
 where = ["src"]
 
 [tool.pytest.ini_options]
-pythonpath = ["src"]
+pythonpath = ["src", "eval"]
 testpaths = ["tests"]
 addopts = "-q"
 

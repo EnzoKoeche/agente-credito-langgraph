@@ -1,0 +1,270 @@
+{
+  "eval_id": "EVAL-DET-06",
+  "categoria": "simulacao",
+  "casos": [
+    {
+      "id": "EVAL-DET-06-00",
+      "entrada": {
+        "valor": 1000.0,
+        "taxa_mensal": 0.0,
+        "n_parcelas": 6
+      },
+      "esperado": {
+        "parcela": 166.66666666666666
+      }
+    },
+    {
+      "id": "EVAL-DET-06-01",
+      "entrada": {
+        "valor": 1500.0,
+        "taxa_mensal": 0.0075,
+        "n_parcelas": 7
+      },
+      "esperado": {
+        "parcela": 220.76231786069576
+      }
+    },
+    {
+      "id": "EVAL-DET-06-02",
+      "entrada": {
+        "valor": 2000.0,
+        "taxa_mensal": 0.01,
+        "n_parcelas": 8
+      },
+      "esperado": {
+        "parcela": 261.3805840866305
+      }
+    },
+    {
+      "id": "EVAL-DET-06-03",
+      "entrada": {
+        "valor": 2500.0,
+        "taxa_mensal": 0.0125,
+        "n_parcelas": 9
+      },
+      "esperado": {
+        "parcela": 295.42638659342543
+      }
+    },
+    {
+      "id": "EVAL-DET-06-04",
+      "entrada": {
+        "valor": 3000.0,
+        "taxa_mensal": 0.015,
+        "n_parcelas": 10
+      },
+      "esperado": {
+        "parcela": 325.3025335951193
+      }
+    },
+    {
+      "id": "EVAL-DET-06-05",
+      "entrada": {
+        "valor": 3500.0,
+        "taxa_mensal": 0.0175,
+        "n_parcelas": 11
+      },
+      "esperado": {
+        "parcela": 352.5563221506639
+      }
+    },
+    {
+      "id": "EVAL-DET-06-06",
+      "entrada": {
+        "valor": 4000.0,
+        "taxa_mensal": 0.02,
+        "n_parcelas": 12
+      },
+      "esperado": {
+        "parcela": 378.23838649180567
+      }
+    },
+    {
+      "id": "EVAL-DET-06-07",
+      "entrada": {
+        "valor": 4500.0,
+        "taxa_mensal": 0.0225,
+        "n_parcelas": 13
+      },
+      "esperado": {
+        "parcela": 403.0958525332497
+      }
+    },
+    {
+      "id": "EVAL-DET-06-08",
+      "entrada": {
+        "valor": 5000.0,
+        "taxa_mensal": 0.0,
+        "n_parcelas": 14
+      },
+      "esperado": {
+        "parcela": 357.14285714285717
+      }
+    },
+    {
+      "id": "EVAL-DET-06-09",
+      "entrada": {
+        "valor": 5500.0,
+        "taxa_mensal": 0.0275,
+        "n_parcelas": 15
+      },
+      "esperado": {
+        "parcela": 452.4254518578621
+      }
+    },
+    {
+      "id": "EVAL-DET-06-10",
+      "entrada": {
+        "valor": 6000.0,
+        "taxa_mensal": 0.03,
+        "n_parcelas": 16
+      },
+      "esperado": {
+        "parcela": 477.66509559292814
+      }
+    },
+    {
+      "id": "EVAL-DET-06-11",
+      "entrada": {
+        "valor": 6500.0,
+        "taxa_mensal": 0.0325,
+        "n_parcelas": 17
+      },
+      "esperado": {
+        "parcela": 503.6828199898812
+      }
+    },
+    {
+      "id": "EVAL-DET-06-12",
+      "entrada": {
+        "valor": 7000.0,
+        "taxa_mensal": 0.035,
+        "n_parcelas": 18
+      },
+      "esperado": {
+        "parcela": 530.717885754559
+      }
+    },
+    {
+      "id": "EVAL-DET-06-13",
+      "entrada": {
+        "valor": 7500.0,
+        "taxa_mensal": 0.0375,
+        "n_parcelas": 19
+      },
+      "esperado": {
+        "parcela": 558.9793300480852
+      }
+    },
+    {
+      "id": "EVAL-DET-06-14",
+      "entrada": {
+        "valor": 8000.0,
+        "taxa_mensal": 0.04,
+        "n_parcelas": 20
+      },
+      "esperado": {
+        "parcela": 588.6540026290307
+      }
+    },
+    {
+      "id": "EVAL-DET-06-15",
+      "entrada": {
+        "valor": 8500.0,
+        "taxa_mensal": 0.0425,
+        "n_parcelas": 21
+      },
+      "esperado": {
+        "parcela": 619.9120771706436
+      }
+    },
+    {
+      "id": "EVAL-DET-06-16",
+      "entrada": {
+        "valor": 9000.0,
+        "taxa_mensal": 0.0,
+        "n_parcelas": 22
+      },
+      "esperado": {
+        "parcela": 409.09090909090907
+      }
+    },
+    {
+      "id": "EVAL-DET-06-17",
+      "entrada": {
+        "valor": 9500.0,
+        "taxa_mensal": 0.0475,
+        "n_parcelas": 23
+      },
+      "esperado": {
+        "parcela": 687.7970871949543
+      }
+    },
+    {
+      "id": "EVAL-DET-06-18",
+      "entrada": {
+        "valor": 10000.0,
+        "taxa_mensal": 0.05,
+        "n_parcelas": 24
+      },
+      "esperado": {
+        "parcela": 724.7090075268698
+      }
+    },
+    {
+      "id": "EVAL-DET-06-19",
+      "entrada": {
+        "valor": 10500.0,
+        "taxa_mensal": 0.0525,
+        "n_parcelas": 25
+      },
+      "esperado": {
+        "parcela": 763.7768993718173
+      }
+    },
+    {
+      "id": "EVAL-DET-06-20",
+      "entrada": {
+        "valor": 11000.0,
+        "taxa_mensal": 0.055,
+        "n_parcelas": 26
+      },
+      "esperado": {
+        "parcela": 805.1237838179992
+      }
+    },
+    {
+      "id": "EVAL-DET-06-21",
+      "entrada": {
+        "valor": 11500.0,
+        "taxa_mensal": 0.0575,
+        "n_parcelas": 27
+      },
+      "esperado": {
+        "parcela": 848.8655081874655
+      }
+    },
+    {
+      "id": "EVAL-DET-06-22",
+      "entrada": {
+        "valor": 12000.0,
+        "taxa_mensal": 0.06,
+        "n_parcelas": 28
+      },
+      "esperado": {
+        "parcela": 895.1106183503143
+      }
+    },
+    {
+      "id": "EVAL-DET-06-23",
+      "entrada": {
+        "valor": 12500.0,
+        "taxa_mensal": 0.0625,
+        "n_parcelas": 29
+      },
+      "esperado": {
+        "parcela": 943.9600559395552
+      }
+    }
+  ]
+}

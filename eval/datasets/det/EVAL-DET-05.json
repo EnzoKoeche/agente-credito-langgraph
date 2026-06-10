@@ -1,0 +1,231 @@
+{
+  "eval_id": "EVAL-DET-05",
+  "categoria": "baixa_confianca",
+  "casos": [
+    {
+      "id": "EVAL-DET-05-00",
+      "entrada": {
+        "confianca": 0.0
+      },
+      "esperado": {
+        "escalona": true
+      }
+    },
+    {
+      "id": "EVAL-DET-05-01",
+      "entrada": {
+        "confianca": 0.0435
+      },
+      "esperado": {
+        "escalona": true
+      }
+    },
+    {
+      "id": "EVAL-DET-05-02",
+      "entrada": {
+        "confianca": 0.087
+      },
+      "esperado": {
+        "escalona": true
+      }
+    },
+    {
+      "id": "EVAL-DET-05-03",
+      "entrada": {
+        "confianca": 0.1304
+      },
+      "esperado": {
+        "escalona": true
+      }
+    },
+    {
+      "id": "EVAL-DET-05-04",
+      "entrada": {
+        "confianca": 0.1739
+      },
+      "esperado": {
+        "escalona": true
+      }
+    },
+    {
+      "id": "EVAL-DET-05-05",
+      "entrada": {
+        "confianca": 0.2174
+      },
+      "esperado": {
+        "escalona": true
+      }
+    },
+    {
+      "id": "EVAL-DET-05-06",
+      "entrada": {
+        "confianca": 0.2609
+      },
+      "esperado": {
+        "escalona": true
+      }
+    },
+    {
+      "id": "EVAL-DET-05-07",
+      "entrada": {
+        "confianca": 0.3043
+      },
+      "esperado": {
+        "escalona": true
+      }
+    },
+    {
+      "id": "EVAL-DET-05-08",
+      "entrada": {
+        "confianca": 0.3478
+      },
+      "esperado": {
+        "escalona": true
+      }
+    },
+    {
+      "id": "EVAL-DET-05-09",
+      "entrada": {
+        "confianca": 0.3913
+      },
+      "esperado": {
+        "escalona": true
+      }
+    },
+    {
+      "id": "EVAL-DET-05-10",
+      "entrada": {
+        "confianca": 0.4348
+      },
+      "esperado": {
+        "escalona": true
+      }
+    },
+    {
+      "id": "EVAL-DET-05-11",
+      "entrada": {
+        "confianca": 0.4783
+      },
+      "esperado": {
+        "escalona": true
+      }
+    },
+    {
+      "id": "EVAL-DET-05-12",
+      "entrada": {
+        "confianca": 0.6
+      },
+      "esperado": {
+        "escalona": false
+      }
+    },
+    {
+      "id": "EVAL-DET-05-13",
+      "entrada": {
+        "confianca": 0.5652
+      },
+      "esperado": {
+        "escalona": true
+      }
+    },
+    {
+      "id": "EVAL-DET-05-14",
+      "entrada": {
+        "confianca": 0.6087
+      },
+      "esperado": {
+        "escalona": false
+      }
+    },
+    {
+      "id": "EVAL-DET-05-15",
+      "entrada": {
+        "confianca": 0.6522
+      },
+      "esperado": {
+        "escalona": false
+      }
+    },
+    {
+      "id": "EVAL-DET-05-16",
+      "entrada": {
+        "confianca": 0.6957
+      },
+      "esperado": {
+        "escalona": false
+      }
+    },
+    {
+      "id": "EVAL-DET-05-17",
+      "entrada": {
+        "confianca": 0.7391
+      },
+      "esperado": {
+        "escalona": false
+      }
+    },
+    {
+      "id": "EVAL-DET-05-18",
+      "entrada": {
+        "confianca": 0.7826
+      },
+      "esperado": {
+        "escalona": false
+      }
+    },
+    {
+      "id": "EVAL-DET-05-19",
+      "entrada": {
+        "confianca": 0.8261
+      },
+      "esperado": {
+        "escalona": false
+      }
+    },
+    {
+      "id": "EVAL-DET-05-20",
+      "entrada": {
+        "confianca": 0.8696
+      },
+      "esperado": {
+        "escalona": false
+      }
+    },
+    {
+      "id": "EVAL-DET-05-21",
+      "entrada": {
+        "confianca": 0.913
+      },
+      "esperado": {
+        "escalona": false
+      }
+    },
+    {
+      "id": "EVAL-DET-05-22",
+      "entrada": {
+        "confianca": 0.9565
+      },
+      "esperado": {
+        "escalona": false
+      }
+    },
+    {
+      "id": "EVAL-DET-05-23",
+      "entrada": {
+        "confianca": 1.0
+      },
+      "esperado": {
+        "escalona": false
+      }
+    },
+    {
+      "id": "EVAL-DET-05-24",
+      "entrada": {
+        "confianca": null
+      },
+      "esperado": {
+        "escalona": true
+      }
+    }
+  ]
+}

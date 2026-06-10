@@ -1,0 +1,198 @@
+{
+  "eval_id": "EVAL-DET-02",
+  "categoria": "media",
+  "casos": [
+    {
+      "id": "EVAL-DET-02-00",
+      "entrada": {
+        "valor_declarado": 1000.0,
+        "valor_comprovado": 691.6666666666666
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-02-01",
+      "entrada": {
+        "valor_declarado": 1000.0,
+        "valor_comprovado": 683.3333333333334
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-02-02",
+      "entrada": {
+        "valor_declarado": 1000.0,
+        "valor_comprovado": 675.0
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-02-03",
+      "entrada": {
+        "valor_declarado": 1000.0,
+        "valor_comprovado": 666.6666666666667
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-02-04",
+      "entrada": {
+        "valor_declarado": 1000.0,
+        "valor_comprovado": 658.3333333333334
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-02-05",
+      "entrada": {
+        "valor_declarado": 1000.0,
+        "valor_comprovado": 650.0
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-02-06",
+      "entrada": {
+        "valor_declarado": 1000.0,
+        "valor_comprovado": 641.6666666666666
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-02-07",
+      "entrada": {
+        "valor_declarado": 1000.0,
+        "valor_comprovado": 633.3333333333333
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-02-08",
+      "entrada": {
+        "valor_declarado": 1000.0,
+        "valor_comprovado": 625.0
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-02-09",
+      "entrada": {
+        "valor_declarado": 1000.0,
+        "valor_comprovado": 616.6666666666667
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-02-10",
+      "entrada": {
+        "valor_declarado": 1000.0,
+        "valor_comprovado": 608.3333333333334
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-02-11",
+      "entrada": {
+        "valor_declarado": 1000.0,
+        "valor_comprovado": 600.0
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-02-12",
+      "entrada": {
+        "valor_declarado": 1000.0,
+        "valor_comprovado": 591.6666666666666
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-02-13",
+      "entrada": {
+        "valor_declarado": 1000.0,
+        "valor_comprovado": 583.3333333333333
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-02-14",
+      "entrada": {
+        "valor_declarado": 1000.0,
+        "valor_comprovado": 575.0
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-02-15",
+      "entrada": {
+        "valor_declarado": 1000.0,
+        "valor_comprovado": 566.6666666666666
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-02-16",
+      "entrada": {
+        "valor_declarado": 1000.0,
+        "valor_comprovado": 558.3333333333334
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-02-17",
+      "entrada": {
+        "valor_declarado": 1000.0,
+        "valor_comprovado": 550.0
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-02-18",
+      "entrada": {
+        "valor_declarado": 1000.0,
+        "valor_comprovado": 541.6666666666666
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-02-19",
+      "entrada": {
+        "valor_declarado": 1000.0,
+        "valor_comprovado": 533.3333333333334
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-02-20",
+      "entrada": {
+        "valor_declarado": 1000.0,
+        "valor_comprovado": 525.0
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-02-21",
+      "entrada": {
+        "valor_declarado": 1000.0,
+        "valor_comprovado": 516.6666666666666
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-02-22",
+      "entrada": {
+        "valor_declarado": 1000.0,
+        "valor_comprovado": 508.3333333333333
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-02-23",
+      "entrada": {
+        "valor_declarado": 1000.0,
+        "valor_comprovado": 500.0
+      },
+      "esperado": "media"
+    }
+  ]
+}

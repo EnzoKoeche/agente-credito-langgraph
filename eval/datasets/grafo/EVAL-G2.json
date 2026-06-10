@@ -1,0 +1,142 @@
+{
+  "eval_id": "EVAL-G2",
+  "categoria": "roteamento_arestas",
+  "casos": [
+    {
+      "id": "e1-txt-00",
+      "aresta": "e1",
+      "entrada": {
+        "formato": "txt"
+      },
+      "esperado": "extracao"
+    },
+    {
+      "id": "e1-pdf_texto-01",
+      "aresta": "e1",
+      "entrada": {
+        "formato": "pdf_texto"
+      },
+      "esperado": "extracao"
+    },
+    {
+      "id": "e1-pdf_escaneado-02",
+      "aresta": "e1",
+      "entrada": {
+        "formato": "pdf_escaneado"
+      },
+      "esperado": "ocr"
+    },
+    {
+      "id": "e1-imagem-03",
+      "aresta": "e1",
+      "entrada": {
+        "formato": "imagem"
+      },
+      "esperado": "ocr"
+    },
+    {
+      "id": "e1-imagem-04",
+      "aresta": "e1",
+      "entrada": {
+        "formato": "imagem"
+      },
+      "esperado": "ocr"
+    },
+    {
+      "id": "e1-txt-05",
+      "aresta": "e1",
+      "entrada": {
+        "formato": "txt"
+      },
+      "esperado": "extracao"
+    },
+    {
+      "id": "e2-0.0-06",
+      "aresta": "e2",
+      "entrada": {
+        "confianca": 0.0
+      },
+      "esperado": "revisao_humana"
+    },
+    {
+      "id": "e2-0.3-07",
+      "aresta": "e2",
+      "entrada": {
+        "confianca": 0.3
+      },
+      "esperado": "revisao_humana"
+    },
+    {
+      "id": "e2-0.59-08",
+      "aresta": "e2",
+      "entrada": {
+        "confianca": 0.59
+      },
+      "esperado": "revisao_humana"
+    },
+    {
+      "id": "e2-0.6-09",
+      "aresta": "e2",
+      "entrada": {
+        "confianca": 0.6
+      },
+      "esperado": "indicadores"
+    },
+    {
+      "id": "e2-0.61-10",
+      "aresta": "e2",
+      "entrada": {
+        "confianca": 0.61
+      },
+      "esperado": "indicadores"
+    },
+    {
+      "id": "e2-0.95-11",
+      "aresta": "e2",
+      "entrada": {
+        "confianca": 0.95
+      },
+      "esperado": "indicadores"
+    },
+    {
+      "id": "e2-None-12",
+      "aresta": "e2",
+      "entrada": {
+        "confianca": null
+      },
+      "esperado": "revisao_humana"
+    },
+    {
+      "id": "e3-aprovado-13",
+      "aresta": "e3",
+      "entrada": {
+        "decisao": "aprovado"
+      },
+      "esperado": "aprovado"
+    },
+    {
+      "id": "e3-devolvido-14",
+      "aresta": "e3",
+      "entrada": {
+        "decisao": "devolvido"
+      },
+      "esperado": "devolvido"
+    },
+    {
+      "id": "e3-aprovado-15",
+      "aresta": "e3",
+      "entrada": {
+        "decisao": "aprovado"
+      },
+      "esperado": "aprovado"
+    },
+    {
+      "id": "e3-devolvido-16",
+      "aresta": "e3",
+      "entrada": {
+        "decisao": "devolvido"
+      },
+      "esperado": "devolvido"
+    }
+  ]
+}

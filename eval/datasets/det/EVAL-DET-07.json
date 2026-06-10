@@ -1,0 +1,166 @@
+{
+  "eval_id": "EVAL-DET-07",
+  "categoria": "bordas",
+  "casos": [
+    {
+      "id": "EVAL-DET-07-00",
+      "entrada": {
+        "valor_declarado": 100.0,
+        "valor_comprovado": 70.0
+      },
+      "esperado": "consistente"
+    },
+    {
+      "id": "EVAL-DET-07-01",
+      "entrada": {
+        "valor_declarado": 100.0,
+        "valor_comprovado": 50.0
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-07-02",
+      "entrada": {
+        "valor_declarado": 1.0,
+        "valor_comprovado": 0.7
+      },
+      "esperado": "consistente"
+    },
+    {
+      "id": "EVAL-DET-07-03",
+      "entrada": {
+        "valor_declarado": 1.0,
+        "valor_comprovado": 0.5
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-07-04",
+      "entrada": {
+        "valor_declarado": 2.0,
+        "valor_comprovado": 1.4
+      },
+      "esperado": "consistente"
+    },
+    {
+      "id": "EVAL-DET-07-05",
+      "entrada": {
+        "valor_declarado": 2.0,
+        "valor_comprovado": 1.0
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-07-06",
+      "entrada": {
+        "valor_declarado": 3.0,
+        "valor_comprovado": 2.0999999999999996
+      },
+      "esperado": "consistente"
+    },
+    {
+      "id": "EVAL-DET-07-07",
+      "entrada": {
+        "valor_declarado": 3.0,
+        "valor_comprovado": 1.5
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-07-08",
+      "entrada": {
+        "valor_declarado": 7.0,
+        "valor_comprovado": 4.8999999999999995
+      },
+      "esperado": "consistente"
+    },
+    {
+      "id": "EVAL-DET-07-09",
+      "entrada": {
+        "valor_declarado": 7.0,
+        "valor_comprovado": 3.5
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-07-10",
+      "entrada": {
+        "valor_declarado": 13.0,
+        "valor_comprovado": 9.1
+      },
+      "esperado": "consistente"
+    },
+    {
+      "id": "EVAL-DET-07-11",
+      "entrada": {
+        "valor_declarado": 13.0,
+        "valor_comprovado": 6.5
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-07-12",
+      "entrada": {
+        "valor_declarado": 10000.0,
+        "valor_comprovado": 7001.0
+      },
+      "esperado": "consistente"
+    },
+    {
+      "id": "EVAL-DET-07-13",
+      "entrada": {
+        "valor_declarado": 10000.0,
+        "valor_comprovado": 6999.0
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-07-14",
+      "entrada": {
+        "valor_declarado": 10000.0,
+        "valor_comprovado": 5001.0
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-07-15",
+      "entrada": {
+        "valor_declarado": 10000.0,
+        "valor_comprovado": 4999.0
+      },
+      "esperado": "alta"
+    },
+    {
+      "id": "EVAL-DET-07-16",
+      "entrada": {
+        "valor_declarado": 1.0,
+        "valor_comprovado": 0.7
+      },
+      "esperado": "consistente"
+    },
+    {
+      "id": "EVAL-DET-07-17",
+      "entrada": {
+        "valor_declarado": 4.0,
+        "valor_comprovado": 2.8
+      },
+      "esperado": "consistente"
+    },
+    {
+      "id": "EVAL-DET-07-18",
+      "entrada": {
+        "valor_declarado": 1.0,
+        "valor_comprovado": 0.5
+      },
+      "esperado": "media"
+    },
+    {
+      "id": "EVAL-DET-07-19",
+      "entrada": {
+        "valor_declarado": 1.0,
+        "valor_comprovado": 0.4
+      },
+      "esperado": "alta"
+    }
+  ]
+}

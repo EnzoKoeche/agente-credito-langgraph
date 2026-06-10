@@ -1,0 +1,198 @@
+{
+  "eval_id": "EVAL-DET-04",
+  "categoria": "dado_ausente",
+  "casos": [
+    {
+      "id": "EVAL-DET-04-00",
+      "entrada": {
+        "valor_declarado": null,
+        "valor_comprovado": 100.0
+      },
+      "esperado": "dado_ausente"
+    },
+    {
+      "id": "EVAL-DET-04-01",
+      "entrada": {
+        "valor_declarado": 100.0,
+        "valor_comprovado": null
+      },
+      "esperado": "dado_ausente"
+    },
+    {
+      "id": "EVAL-DET-04-02",
+      "entrada": {
+        "valor_declarado": 0.0,
+        "valor_comprovado": 100.0
+      },
+      "esperado": "dado_ausente"
+    },
+    {
+      "id": "EVAL-DET-04-03",
+      "entrada": {
+        "valor_declarado": -50.0,
+        "valor_comprovado": 100.0
+      },
+      "esperado": "dado_ausente"
+    },
+    {
+      "id": "EVAL-DET-04-04",
+      "entrada": {
+        "valor_declarado": null,
+        "valor_comprovado": null
+      },
+      "esperado": "dado_ausente"
+    },
+    {
+      "id": "EVAL-DET-04-05",
+      "entrada": {
+        "valor_declarado": -1.0,
+        "valor_comprovado": -1.0
+      },
+      "esperado": "dado_ausente"
+    },
+    {
+      "id": "EVAL-DET-04-06",
+      "entrada": {
+        "valor_declarado": null,
+        "valor_comprovado": 100.0
+      },
+      "esperado": "dado_ausente"
+    },
+    {
+      "id": "EVAL-DET-04-07",
+      "entrada": {
+        "valor_declarado": 100.0,
+        "valor_comprovado": null
+      },
+      "esperado": "dado_ausente"
+    },
+    {
+      "id": "EVAL-DET-04-08",
+      "entrada": {
+        "valor_declarado": 0.0,
+        "valor_comprovado": 100.0
+      },
+      "esperado": "dado_ausente"
+    },
+    {
+      "id": "EVAL-DET-04-09",
+      "entrada": {
+        "valor_declarado": -50.0,
+        "valor_comprovado": 100.0
+      },
+      "esperado": "dado_ausente"
+    },
+    {
+      "id": "EVAL-DET-04-10",
+      "entrada": {
+        "valor_declarado": null,
+        "valor_comprovado": null
+      },
+      "esperado": "dado_ausente"
+    },
+    {
+      "id": "EVAL-DET-04-11",
+      "entrada": {
+        "valor_declarado": -1.0,
+        "valor_comprovado": -1.0
+      },
+      "esperado": "dado_ausente"
+    },
+    {
+      "id": "EVAL-DET-04-12",
+      "entrada": {
+        "valor_declarado": null,
+        "valor_comprovado": 100.0
+      },
+      "esperado": "dado_ausente"
+    },
+    {
+      "id": "EVAL-DET-04-13",
+      "entrada": {
+        "valor_declarado": 100.0,
+        "valor_comprovado": null
+      },
+      "esperado": "dado_ausente"
+    },
+    {
+      "id": "EVAL-DET-04-14",
+      "entrada": {
+        "valor_declarado": 0.0,
+        "valor_comprovado": 100.0
+      },
+      "esperado": "dado_ausente"
+    },
+    {
+      "id": "EVAL-DET-04-15",
+      "entrada": {
+        "valor_declarado": -50.0,
+        "valor_comprovado": 100.0
+      },
+      "esperado": "dado_ausente"
+    },
+    {
+      "id": "EVAL-DET-04-16",
+      "entrada": {
+        "valor_declarado": null,
+        "valor_comprovado": null
+      },
+      "esperado": "dado_ausente"
+    },
+    {
+      "id": "EVAL-DET-04-17",
+      "entrada": {
+        "valor_declarado": -1.0,
+        "valor_comprovado": -1.0
+      },
+      "esperado": "dado_ausente"
+    },
+    {
+      "id": "EVAL-DET-04-18",
+      "entrada": {
+        "valor_declarado": null,
+        "valor_comprovado": 100.0
+      },
+      "esperado": "dado_ausente"
+    },
+    {
+      "id": "EVAL-DET-04-19",
+      "entrada": {
+        "valor_declarado": 100.0,
+        "valor_comprovado": null
+      },
+      "esperado": "dado_ausente"
+    },
+    {
+      "id": "EVAL-DET-04-20",
+      "entrada": {
+        "valor_declarado": 0.0,
+        "valor_comprovado": 100.0
+      },
+      "esperado": "dado_ausente"
+    },
+    {
+      "id": "EVAL-DET-04-21",
+      "entrada": {
+        "valor_declarado": -50.0,
+        "valor_comprovado": 100.0
+      },
+      "esperado": "dado_ausente"
+    },
+    {
+      "id": "EVAL-DET-04-22",
+      "entrada": {
+        "valor_declarado": null,
+        "valor_comprovado": null
+      },
+      "esperado": "dado_ausente"
+    },
+    {
+      "id": "EVAL-DET-04-23",
+      "entrada": {
+        "valor_declarado": -1.0,
+        "valor_comprovado": -1.0
+      },
+      "esperado": "dado_ausente"
+    }
+  ]
+}
