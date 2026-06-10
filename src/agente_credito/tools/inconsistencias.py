@@ -25,13 +25,17 @@ def discrepancia_relativa(
         return None
     if valor_declarado <= 0:
         return None
-    return abs(valor_declarado - valor_comprovado) / valor_declarado
+    # round(.,10) elimina ruido de ponto flutuante (ex.: 0.30000000000000004),
+    # garantindo as bordas exatas 0,30/0,50 da RF-04. 1e-10 << granularidade do dominio.
+    return round(abs(valor_declarado - valor_comprovado) / valor_declarado, 10)
 
 
 def classificar_severidade(discrepancia: float | None) -> Severidade:
     """Classifica a severidade a partir da discrepancia (comparacao estrita)."""
     if discrepancia is None:
         return Severidade.DADO_AUSENTE
+    # robustez de ponto flutuante: 0.30000000000000004 deve contar como 0,30 (borda RF-04)
+    discrepancia = round(discrepancia, 10)
     if discrepancia > LIMIAR_INCONSISTENCIA_ALTA:
         return Severidade.ALTA
     if discrepancia > LIMIAR_INCONSISTENCIA_MEDIA:

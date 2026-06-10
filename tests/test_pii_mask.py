@@ -37,3 +37,18 @@ def test_contem_pii():
 
 def test_mascarar_none_vira_vazio():
     assert mascarar_pii(None) == ""
+
+
+def test_nome_nao_faz_over_match():
+    # 'Ana' nao pode mascarar 'ana' dentro de 'Mariana' (fronteira de palavra)
+    assert mascarar_pii("Ana Paula e Mariana", nome="Ana") == "[NOME] Paula e Mariana"
+
+
+def test_nome_com_espacos_multiplos_ainda_mascara():
+    out = mascarar_pii("Cliente Joao  da  Silva aprovado", nome="Joao da Silva")
+    assert "Joao" not in out
+    assert "[NOME]" in out
+
+
+def test_contem_pii_detecta_telefone():
+    assert contem_pii("ligue 11 98765-4321")

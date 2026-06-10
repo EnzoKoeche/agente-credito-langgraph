@@ -89,8 +89,10 @@ def no_indicadores(state: AnalysisState, deps: Deps) -> dict:
     d = state.dados_extraidos
     comp = cap = parc = None
     if d is not None:
+        # Guards uniformes em `is not None`: 0.0 e' valor de dominio legitimo; a
+        # positividade e' responsabilidade das tools (que levantam ValueError -> None).
         try:
-            if d.soma_parcelas_mensais is not None and d.renda_liquida_mensal:
+            if d.soma_parcelas_mensais is not None and d.renda_liquida_mensal is not None:
                 comp = comprometimento_de_renda(d.soma_parcelas_mensais, d.renda_liquida_mensal)
         except ValueError:
             comp = None
@@ -100,7 +102,11 @@ def no_indicadores(state: AnalysisState, deps: Deps) -> dict:
         except ValueError:
             cap = None
         try:
-            if d.valor_credito_solicitado and d.taxa_mensal is not None and d.n_parcelas:
+            if (
+                d.valor_credito_solicitado is not None
+                and d.taxa_mensal is not None
+                and d.n_parcelas is not None
+            ):
                 parc = simulacao_de_parcela(d.valor_credito_solicitado, d.taxa_mensal, d.n_parcelas)
         except ValueError:
             parc = None
@@ -198,7 +204,8 @@ def no_registro_auditoria(state: AnalysisState, deps: Deps) -> dict:
         escalonado_baixa_confianca=state.escalonado,
         tentativas_injecao=state.tentativas_injecao,
         decisao=dh.decisao if dh else None,
-        motivo_decisao=dh.motivo if dh else "",
+        # motivo e' texto livre do revisor humano -> mascarar PII antes de persistir (RF-11)
+        motivo_decisao=mascarar_pii(dh.motivo, nome=nome) if dh else "",
     )
     return {"metadados": metadados, "trilha": state.trilha + ["registro_auditoria"]}
 
@@ -217,8 +224,12 @@ def roteia_confianca(state: AnalysisState) -> str:
 
 
 def roteia_revisao(state: AnalysisState) -> str:
-    """e3 — aprovado/devolvido (ambos registram auditoria; o rotulo e' o roteado)."""
+    """e3 — aprovado/devolvido (ambos registram auditoria; o rotulo e' o roteado).
+
+    Fail-safe: ausencia de decisao humana e' condicao de erro (premissa P1 — o agente
+    nunca decide), jamais um 'aprovado' implicito.
+    """
     dh = state.decisao_humana
-    if dh and dh.decisao == Decisao.DEVOLVIDO:
-        return "devolvido"
-    return "aprovado"
+    if dh is None:
+        raise ValueError("roteia_revisao alcancado sem decisao humana (viola P1)")
+    return "devolvido" if dh.decisao == Decisao.DEVOLVIDO else "aprovado"

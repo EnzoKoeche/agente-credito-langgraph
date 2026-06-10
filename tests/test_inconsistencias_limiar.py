@@ -60,3 +60,11 @@ def test_detectar_filtra_consistentes_e_classifica():
 
     todos = detectar_inconsistencias(pares, incluir_consistentes=True)
     assert len(todos) == 3
+
+
+def test_robustez_ponto_flutuante_na_borda_030():
+    # |1.0 - 0.7| / 1.0 = 0,30 logico, mas o float bruto e' 0.30000000000000004.
+    # Sem arredondamento isso classificaria como MEDIA (regressao do RF-04).
+    assert discrepancia_relativa(1.0, 0.7) == pytest.approx(0.30)
+    assert classificar_severidade(discrepancia_relativa(1.0, 0.7)) == Severidade.CONSISTENTE
+    assert classificar_severidade(discrepancia_relativa(4.0, 2.8)) == Severidade.CONSISTENTE

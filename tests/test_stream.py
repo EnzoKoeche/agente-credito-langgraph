@@ -25,3 +25,8 @@ def test_stream_updates_emite_progresso_dos_nos(dados_consistentes):
     assert "validacao_confianca" in vistos
     assert "indicadores" in vistos
     assert "pre_parecer" in vistos
+
+    # emitidos na ORDEM do fluxo feliz (pre-interrupt)
+    ordem = ["ingestao", "extracao", "validacao_confianca", "indicadores", "pre_parecer"]
+    indices = [vistos.index(n) for n in ordem]
+    assert indices == sorted(indices)

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import pytest
+
 from agente_credito.nodes import roteia_confianca, roteia_ingestao, roteia_revisao
 from agente_credito.state import (
     AnalysisState,
@@ -36,3 +38,9 @@ def test_e3_aprovado_e_devolvido():
     devolvido = AnalysisState(decisao_humana=DecisaoHumana(decisao=Decisao.DEVOLVIDO))
     assert roteia_revisao(aprovado) == "aprovado"
     assert roteia_revisao(devolvido) == "devolvido"
+
+
+def test_e3_sem_decisao_humana_levanta_erro():
+    # Fail-safe: ausencia de decisao nunca vira 'aprovado' implicito (P1)
+    with pytest.raises(ValueError):
+        roteia_revisao(AnalysisState())

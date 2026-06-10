@@ -66,7 +66,9 @@ class DadosExtraidos(BaseModel):
     taxa_mensal: float | None = None
     n_parcelas: int | None = None
     pares_para_conferencia: list[ParConferencia] = Field(default_factory=list)
-    # PII — sempre mascarada em logs/auditoria (RF-11)
+    # PII estruturada. Os TEXTOS derivados (pre-parecer/auditoria) sao mascarados via
+    # mascarar_pii (RF-11). O valor cru vive no estado/checkpoint -> NAO logue o
+    # AnalysisState cru. Redigir PII no checkpoint persistido e' trabalho futuro (caveat RNF-03).
     nome_cliente: str | None = None
     cpf: str | None = None
     # Confianca atribuida pelo extrator (0..1)

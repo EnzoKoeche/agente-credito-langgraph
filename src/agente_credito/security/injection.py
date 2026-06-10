@@ -10,11 +10,17 @@ from __future__ import annotations
 
 import re
 
+# Deteccao best-effort (PT + EN). A robustez NAO depende disto (e' so sinal de
+# auditoria): a defesa real e' tratar todo conteudo como DADO via `como_dado`.
 _PADROES_INJECAO = [
-    re.compile(r"ignore\s+(as\s+)?(regras|instru\w+|tudo)", re.IGNORECASE),
+    re.compile(r"ignore\s+(as\s+|all\s+|the\s+)?(previous\s+)?(regras|instru\w+|rules|instructions|tudo)", re.IGNORECASE),
+    re.compile(r"disregard\s+(the\s+|all\s+|previous\s+)?(rules|instructions)", re.IGNORECASE),
     re.compile(r"desconsidere\s+(as\s+)?(regras|instru\w+)", re.IGNORECASE),
-    re.compile(r"aprove\s+(este|esse|o)\s+cr[eé]dito", re.IGNORECASE),
+    re.compile(r"esque[cç]\w*\s+(as\s+)?(regras|instru\w+)", re.IGNORECASE),
+    re.compile(r"aprove\s+(este|esse|o|a)\s+(cr[eé]dito|pedido|solicita\w+|financiamento|opera\w+)", re.IGNORECASE),
     re.compile(r"aprove\s+automaticamente", re.IGNORECASE),
+    re.compile(r"liber(e|ar)\s+(o\s+|a\s+)?(cr[eé]dito|financiamento|valor|opera\w+)", re.IGNORECASE),
+    re.compile(r"autorize\s+(o\s+|a\s+)?(cr[eé]dito|pedido|financiamento|opera\w+)", re.IGNORECASE),
     re.compile(r"revele\s+(o\s+)?(prompt|sistema|instru\w+)", re.IGNORECASE),
     re.compile(r"voc[eê]\s+(deve|tem que|precisa)\s+aprovar", re.IGNORECASE),
     re.compile(r"system\s*prompt", re.IGNORECASE),
