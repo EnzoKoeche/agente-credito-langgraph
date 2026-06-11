@@ -11,6 +11,10 @@ segurança de PII, custo/latência controlados).
 > Streamlit e evals pagas executadas (**6/6 PASS**, ~US$0,02). **64 testes verdes**, cobertura
 > das tools determinísticas = **100%**.
 
+**🔴 Demo ao vivo:** [agente-credito-langgraph.streamlit.app](https://agente-credito-langgraph.streamlit.app) — modo demo sem custo (3 cenários sintéticos); modo real aceita upload com a sua própria chave Anthropic.
+
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://agente-credito-langgraph.streamlit.app)
+
 ## Princípios (inegociáveis)
 
 1. O agente **assiste** o analista; **nunca** decide aprovação/recusa — toda decisão passa por

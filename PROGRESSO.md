@@ -147,3 +147,16 @@ Espelha o log do Notion. Datas absolutas.
 
 ### Próximo passo
 - Opcional: Langfuse (tracing), screenshot da demo no README, deploy no Streamlit Community Cloud.
+
+---
+
+## 2026-06-10 — Deploy público no Streamlit Community Cloud
+
+### O que foi feito
+- **Demo ao vivo:** [agente-credito-langgraph.streamlit.app](https://agente-credito-langgraph.streamlit.app) — deploy via share.streamlit.io (repo público, branch `main`, entrypoint `app/streamlit_app.py`, Python 3.12, **sem secrets**).
+- A primeira tentativa de deploy não persistiu (workspace sem app → not_found para todos); a segunda, com o campo **App URL** preenchido, subiu na URL limpa. Verificado de fora com sessão anônima.
+- **Segurança do custo:** o modo demo roda sem API; no modo real a chave é digitada na sidebar pelo próprio visitante — a chave do Enzo não existe no deploy.
+- README ganhou link + badge "Demo ao vivo".
+
+### Próximo passo
+- Opcional: Langfuse (tracing) e screenshot da demo no README.
