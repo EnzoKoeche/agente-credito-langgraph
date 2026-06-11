@@ -94,3 +94,22 @@ Espelha o log do Notion. Datas absolutas.
 
 ### Próximo passo
 - Restam da Fase 2: **Langfuse** (tracing por run: versão de prompt, custo, latência) e **evals pagas** (`EVAL-PAGA-HALU/INJ/PII`, com guard `--sanity` e custo avisado). Depois, **Fase 3** (README final com comparativo SDK×LangGraph, secret-scan do histórico, push público via `gh`).
+
+---
+
+## 2026-06-10 — Fase 2 (evals pagas) + Fase 3 (parcial)
+
+### O que foi feito
+- **Evals pagas (harness):** `eval/run_paga.py` com **guard de custo** — dry-run por padrão (só estima, US$0,00), `--run` exigido para gastar, aborta sem `ANTHROPIC_API_KEY`. EVAL-PAGA-HALU/INJ/PII (datasets em `eval/datasets/paga/`), `cost.py` com preços do Haiku 4.5 (consultados na referência, não de memória). Estimativa `--sanity` ≈ US$0,02 (6 dossiês, dentro do RNF-01). Teste pago **pulado sem chave** (CI não gasta). **Não executado** (sem chave — por design de segurança). Commit `2cc0835`.
+- **Notion:** página "Reprojeto LangGraph — agente-credito-langgraph" criada como filha de "🏦 Agente de Análise de Crédito — Estado do Projeto" (via MCP).
+- **Fase 3 (parcial):** README enriquecido — **diagrama Mermaid do grafo**, seção de **resultados das evals** (com caveats) e a seção-centro **"SDK pura × LangGraph — trade-offs reais"** (checkpointing/interrupt/roteamento ganham; verbosidade/serde do checkpoint custam; custo/latência idênticos).
+
+### Segurança
+- **Chave de API vazada no chat** (3ª vez no projeto) — recusada, **não usada nem gravada**; orientado a rotacionar. Memória registrada. Scan do histórico do repo: **limpo** (só o placeholder do `.env.example`).
+
+### Pendências (precisam do Enzo)
+- Rotacionar a chave; depois `python eval/run_paga.py --sanity --run` com a chave nova no `.env`.
+- **Push público:** sem rede para `github.com` deste WSL. Comando pronto: `gh repo create EnzoKoeche/agente-credito-langgraph --public --source=. --remote=origin --push`.
+
+### Próximo passo
+- Push público (Enzo) → colar link no Notion → opcional: Langfuse + screenshot da demo no README.
