@@ -49,7 +49,10 @@ class AnthropicExtractor:
     def extrair(self, documentos: list[Documento]) -> DadosExtraidos:
         from langchain_anthropic import ChatAnthropic  # lazy
 
-        llm = ChatAnthropic(model=self.model, api_key=self.api_key, temperature=0)
+        kwargs: dict = {"model": self.model, "temperature": 0}
+        if self.api_key:  # api_key=None explicito desligaria o fallback do env ANTHROPIC_API_KEY
+            kwargs["api_key"] = self.api_key
+        llm = ChatAnthropic(**kwargs)
         estruturado = llm.with_structured_output(DadosExtraidos)
         blocos = "\n\n".join(como_dado(d.conteudo) for d in documentos)
         return estruturado.invoke(
