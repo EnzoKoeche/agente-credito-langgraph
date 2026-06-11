@@ -39,6 +39,7 @@ eval/results/*.jsonl
 
 # === Skills de agente (tooling local, terceiros) ===
 .agents/
+skills-lock.json
 
 # === OS / editores ===
 .DS_Store
@@ -46,3 +47,4 @@ Thumbs.db
 .idea/
 .vscode/
 *.swp
+skills-lock.json
