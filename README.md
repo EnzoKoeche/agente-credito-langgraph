@@ -47,9 +47,13 @@ python -m venv .venv && source .venv/bin/activate   # Python 3.12 (alvo) / valid
 pip install -r requirements.txt
 cp .env.example .env        # preencha ANTHROPIC_API_KEY para o modo real (opcional)
 pytest -q                   # suíte de testes (modo demo, sem custo de API)
+
+python eval/run_all.py            # evals determinísticas grátis -> eval/results/RESULTS.md
+streamlit run app/streamlit_app.py  # front: upload → progresso → revisão HITL → auditoria
 ```
 
 O **modo demo** usa um extrator mock injetável — o grafo percorre o fluxo completo sem chamadas pagas.
+O **front Streamlit** abre em modo demo (cenários sintéticos) ou real (Anthropic, requer chave).
 
 ## Documentação (Fase 0)
 

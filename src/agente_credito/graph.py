@@ -69,3 +69,14 @@ def build_demo_graph(dados: DadosExtraidos, checkpointer=None):
     """Grafo em modo demo: extrator mock + OCR no-op. Sem custo de API (RF-12)."""
     deps = Deps(extractor=MockExtractor(dados), ocr_engine=NoopOcrEngine())
     return build_graph(deps, checkpointer=checkpointer)
+
+
+def build_real_graph(checkpointer=None, model: str | None = None, api_key: str | None = None):
+    """Grafo em modo real: extrator Anthropic (Haiku) + OCR no-op. Requer chave/credito."""
+    from .extraction.extractor import AnthropicExtractor  # lazy (langchain)
+
+    deps = Deps(
+        extractor=AnthropicExtractor(model=model, api_key=api_key),
+        ocr_engine=NoopOcrEngine(),
+    )
+    return build_graph(deps, checkpointer=checkpointer)

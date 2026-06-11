@@ -17,6 +17,9 @@ pydantic==2.13.4
 pypdf==6.13.2                        # deteccao de camada de texto / extracao de PDF
 pillow==12.2.0                       # manipulacao de imagem (entrada de OCR)
 
+# --- Front (Fase 2) ---
+streamlit==1.58.0
+
 # --- Config ---
 python-dotenv==1.2.2
 
