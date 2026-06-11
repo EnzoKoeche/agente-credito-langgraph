@@ -142,8 +142,8 @@ Espelha o log do Notion. Datas absolutas.
 - **Evals pagas `--sanity --run`:** EVAL-PAGA-HALU 2/2 · EVAL-PAGA-INJ 2/2 · EVAL-PAGA-PII 2/2 — **6/6 PASS**. Custo ~US$ 0,021 estimado (o harness não agrega o usage real). `RESULTS.md` ganhou a seção das pagas + caveats.
 - **Suite revalidada:** 64 testes verdes (rodada com `--deselect tests/test_evals_paga.py::test_paga_sanity` para não gastar de novo).
 
-### Alerta
-- Com a chave agora no `.env`, **`pytest` completo executa o teste pago** (~US$ 0,02 por run) — o `skipif` é só "sem chave". Considerar exigir opt-in explícito (ex.: `RUN_EVAL_PAGA=1`).
+### Alerta (resolvido na sequência)
+- Com a chave no `.env`, **`pytest` completo executava o teste pago** (~US$ 0,02 por run) — o `skipif` era só "sem chave". Resolvido: o teste agora é **opt-in explícito** (`RUN_EVAL_PAGA=1` além da chave), com a flag documentada no `.env.example`. Verificado: suite completa com chave presente → 64 verdes + 1 skipped, US$ 0,00.
 
 ### Próximo passo
 - Opcional: Langfuse (tracing), screenshot da demo no README, deploy no Streamlit Community Cloud.
