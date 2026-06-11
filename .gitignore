@@ -37,6 +37,9 @@ checkpoints*.db
 eval/results/raw/
 eval/results/*.jsonl
 
+# === Skills de agente (tooling local, terceiros) ===
+.agents/
+
 # === OS / editores ===
 .DS_Store
 Thumbs.db

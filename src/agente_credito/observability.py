@@ -65,12 +65,10 @@ def criar_handler():
     from langfuse import Langfuse  # lazy
     from langfuse.langchain import CallbackHandler  # lazy
 
-    Langfuse(  # singleton por public_key — chamadas repetidas sao idempotentes
-        public_key=os.environ["LANGFUSE_PUBLIC_KEY"],
-        secret_key=os.environ["LANGFUSE_SECRET_KEY"],
-        host=os.getenv("LANGFUSE_HOST", "https://cloud.langfuse.com"),
-        mask=_mask_langfuse,
-    )
+    # So o `mask` precisa vir por codigo; chaves e host o SDK resolve do ambiente
+    # (LANGFUSE_PUBLIC_KEY/SECRET_KEY; LANGFUSE_BASE_URL -> LANGFUSE_HOST -> default).
+    # O client e' singleton por public_key — chamadas repetidas sao idempotentes.
+    Langfuse(mask=_mask_langfuse)
     return CallbackHandler()
 
 

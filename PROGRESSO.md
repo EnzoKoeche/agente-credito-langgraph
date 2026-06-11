@@ -177,3 +177,16 @@ Espelha o log do Notion. Datas absolutas.
 
 ### Próximo passo
 - Opcional: criar projeto no cloud.langfuse.com, preencher as chaves no `.env` e olhar um trace real; screenshot da demo no README.
+
+---
+
+## 2026-06-11 — Langfuse verificado fim-a-fim (skill oficial + chaves reais)
+
+### O que foi feito
+- **Skill oficial instalada** (`npx skills add langfuse/skills` → `.agents/skills/langfuse`, gitignorada) e seguida: docs-first, auditoria de baseline (handler de framework, nomes descritivos, session_id, PII mascarada, flush — já cobertos).
+- **Ajustes de best practice que a auditoria pegou:** (1) o código passava `host=` explícito lendo só `LANGFUSE_HOST` — atropelava a resolução do SDK e mandaria traces pro host errado com `LANGFUSE_BASE_URL` (nome oficial atual; projeto do Enzo é US). Agora só o `mask` vai por código e o SDK resolve chaves/host do ambiente. (2) o front Streamlit não carregava o `.env` → `load_dotenv()` adicionado. (3) `langfuse_user_id` = revisor na decisão HITL (app user-aware).
+- **Verificação E2E com chaves reais (projeto US):** grafo demo (US$ 0,00 de LLM) com tracing → flush → `GET /api/public/traces`: 2 traces na sessão (execução + decisão), tag e `versao_prompt` presentes, **CPF cru ausente do payload e máscara `***.***.***-**` presente** — invariante de PII confirmado contra o serviço real.
+- Suite: 72 verdes + 1 skipped.
+
+### Próximo passo
+- Opcional: screenshot da demo no README. Projeto sem furos vs. objetivo declarado.

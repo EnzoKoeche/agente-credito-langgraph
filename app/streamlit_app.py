@@ -20,7 +20,10 @@ for _p in (str(_RAIZ / "src"), str(_RAIZ / "app")):
         sys.path.insert(0, _p)
 
 import streamlit as st
+from dotenv import load_dotenv
 from langgraph.types import Command
+
+load_dotenv()  # chaves opcionais (ex.: LANGFUSE_*) do .env local, ignorado pelo git
 
 import scenarios
 from agente_credito.graph import build_demo_graph, build_real_graph
@@ -133,10 +136,13 @@ def _rodar() -> None:
 
 
 def _decidir(decisao: str) -> None:
+    metadata = {"langfuse_session_id": st.session_state.thread_id}
+    if st.session_state.get("revisor"):
+        metadata["langfuse_user_id"] = st.session_state["revisor"]
     cfg = config_com_tracing(
         {"configurable": {"thread_id": st.session_state.thread_id}},
         run_name="streamlit-decisao",
-        metadata={"langfuse_session_id": st.session_state.thread_id},
+        metadata=metadata,
     )
     with sqlite_checkpointer(st.session_state.db) as cp:
         app = _construir_app(cp)

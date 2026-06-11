@@ -89,7 +89,7 @@ Evals **pagas** (LLM real, com guard de custo) — `python eval/run_paga.py --sa
 Tracing por run com [Langfuse](https://langfuse.com): cada execução do grafo vira um trace com os nós percorridos, latência por nó, tokens/custo da chamada LLM e a versão de prompt/modelo como metadados; o `thread_id` agrupa execução + decisão HITL numa mesma sessão. **Sem as chaves é no-op** — nada é enviado e o grafo roda exatamente igual (os testes não exigem Langfuse).
 
 1. Crie um projeto gratuito em [cloud.langfuse.com](https://cloud.langfuse.com) e copie as chaves.
-2. Preencha no `.env`: `LANGFUSE_PUBLIC_KEY`, `LANGFUSE_SECRET_KEY` (e `LANGFUSE_HOST`, se self-hosted).
+2. Preencha no `.env`: `LANGFUSE_PUBLIC_KEY`, `LANGFUSE_SECRET_KEY` e `LANGFUSE_BASE_URL` (região do projeto — ex.: `https://us.cloud.langfuse.com`).
 3. Rode o front ou as evals pagas — os traces aparecem nomeados por run (`streamlit-demo`, `eval-...`).
 
 **PII nunca sai do processo em claro:** o cliente Langfuse é criado com `mask` ligado ao [`security/pii.py`](src/agente_credito/security/pii.py) — CPF, e-mail, telefone são mascarados antes do envio, o mesmo invariante (RF-11) da trilha de auditoria.
