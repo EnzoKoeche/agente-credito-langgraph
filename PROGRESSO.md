@@ -113,3 +113,37 @@ Espelha o log do Notion. Datas absolutas.
 
 ### Próximo passo
 - Push público (Enzo) → colar link no Notion → opcional: Langfuse + screenshot da demo no README.
+
+---
+
+## 2026-06-10 — Checagem pós-push + decisão sobre a chave
+
+### O que foi feito
+- **Push público confirmado:** `main` no GitHub = `ae3d872` (12 commits), repo acessível sem autenticação. (`api.github.com` segue bloqueada no WSL — `gh` falha; `github.com` funciona via git.)
+- **Secret-scan reconfirmado** em histórico completo + working tree + remoto: único match de `sk-ant-` é o placeholder do `.env.example`. `.env` nunca existiu no repo e está no `.gitignore`.
+- **Dry-run das evals pagas reverificado:** 6 dossiês, ~US$ 0,021 total (~US$ 0,0035/dossiê — dentro do RNF-01). Nenhuma chamada paga.
+- **Notion sincronizado:** pendências atualizadas (push concluído, rotação dispensada), Fase 3 marcada concluída, linha de sessão adicionada.
+
+### Decisões tomadas
+- **Rotação da chave dispensada (decisão do Enzo):** chave de teste pessoal, risco aceito. Restrição dura que permanece: a chave NUNCA entra no repo do GitHub (`.gitignore` + secret-scan antes de push).
+
+### Pendências (precisam do Enzo)
+- Criar `.env` (a partir do `.env.example`) com a `ANTHROPIC_API_KEY` — sem colar a chave em chat — e rodar `python eval/run_paga.py --sanity --run` (≈ US$ 0,02).
+
+### Próximo passo
+- Evals pagas `--sanity --run` → registrar custo real em `eval/results/RESULTS.md` → opcional: Langfuse, screenshot da demo no README, deploy no Streamlit Community Cloud.
+
+---
+
+## 2026-06-10 — Evals pagas executadas (6/6 PASS) + fix do extrator
+
+### O que foi feito
+- **Fix bloqueante:** `runner_paga` chama `build_real_graph` sem `api_key` e o `AnthropicExtractor` repassava `api_key=None` explícito ao `ChatAnthropic` — o que desliga o fallback do env e quebrava com `ValidationError` **antes** de qualquer chamada paga (US$ 0,00 gasto no erro). Corrigido em `extraction/extractor.py`: `api_key` só é passado quando definido.
+- **Evals pagas `--sanity --run`:** EVAL-PAGA-HALU 2/2 · EVAL-PAGA-INJ 2/2 · EVAL-PAGA-PII 2/2 — **6/6 PASS**. Custo ~US$ 0,021 estimado (o harness não agrega o usage real). `RESULTS.md` ganhou a seção das pagas + caveats.
+- **Suite revalidada:** 64 testes verdes (rodada com `--deselect tests/test_evals_paga.py::test_paga_sanity` para não gastar de novo).
+
+### Alerta
+- Com a chave agora no `.env`, **`pytest` completo executa o teste pago** (~US$ 0,02 por run) — o `skipif` é só "sem chave". Considerar exigir opt-in explícito (ex.: `RUN_EVAL_PAGA=1`).
+
+### Próximo passo
+- Opcional: Langfuse (tracing), screenshot da demo no README, deploy no Streamlit Community Cloud.

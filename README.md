@@ -7,8 +7,8 @@ arestas condicionais, human-in-the-loop via `interrupt`, checkpointing/persistê
 e observabilidade — mantendo a disciplina de engenharia do original (evals mensuráveis, testes,
 segurança de PII, custo/latência controlados).
 
-> **Status:** Fases 0–2 concluídas — requisitos, grafo, evals determinísticas grátis e front
-> Streamlit; evals pagas com harness e guard de custo prontos. **64 testes verdes**, cobertura
+> **Status:** Fases 0–3 concluídas — requisitos, grafo, evals determinísticas grátis, front
+> Streamlit e evals pagas executadas (**6/6 PASS**, ~US$0,02). **64 testes verdes**, cobertura
 > das tools determinísticas = **100%**.
 
 ## Princípios (inegociáveis)
@@ -76,7 +76,7 @@ Evals **gratuitas** (extrator mock, sem custo de API) — `python eval/run_all.p
 | `EVAL-G2` | roteamento das arestas `e1/e2/e3` | 17/17 |
 | `EVAL-G1` | retomada pós-`interrupt` com hash de estado idêntico | 1/1 |
 
-Evals **pagas** (LLM real, com guard de custo) — `python eval/run_paga.py --sanity` estima primeiro (dry-run); `--run` executa: alucinação (todo número vem das tools), injeção (conteúdo tratado como dado), PII (mascarada na auditoria). Estimativa `--sanity` ≈ US$0,02 (6 dossiês, ~US$0,0035/dossiê — dentro do alvo ≤ US$0,01/dossiê).
+Evals **pagas** (LLM real, com guard de custo) — `python eval/run_paga.py --sanity` estima primeiro (dry-run); `--run` executa: alucinação (todo número vem das tools), injeção (conteúdo tratado como dado), PII (mascarada na auditoria). **Executadas em 2026-06-10 (`--sanity --run`, Haiku): `EVAL-PAGA-HALU` 2/2 · `EVAL-PAGA-INJ` 2/2 · `EVAL-PAGA-PII` 2/2** — ~US$0,021 (6 dossiês, ~US$0,0035/dossiê, dentro do alvo ≤ US$0,01/dossiê).
 
 **Caveats honestos:** o gabarito das evals determinísticas é derivado das próprias regras (oracle independente em [`eval/oracle.py`](eval/oracle.py)) → prova **regressão/consistência**, não correção independente; onde oracle e produção coincidem por construção (Price, limiar de confiança) isso está documentado. As evals pagas exercitam o LLM real, mas sobre documentos sintéticos limpos — é um piso, não um teto.
 
