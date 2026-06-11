@@ -20,6 +20,10 @@ pillow==12.2.0                       # manipulacao de imagem (entrada de OCR)
 # --- Front (Fase 2) ---
 streamlit==1.58.0
 
+# --- Observabilidade (opcional em RUNTIME: no-op sem chaves LANGFUSE_*) ---
+langfuse==4.7.1
+langchain==1.3.7                     # exigido pela integracao langchain do langfuse
+
 # --- Config ---
 python-dotenv==1.2.2
 

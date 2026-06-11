@@ -14,6 +14,7 @@ import pathlib
 from dotenv import load_dotenv
 
 from agente_credito.config import modelo_configurado
+from agente_credito.observability import config_com_tracing
 from agente_credito.security.pii import contem_pii
 
 load_dotenv()  # carrega .env local (ignorado pelo git) se existir
@@ -91,7 +92,11 @@ def _rodar_caso(caso: dict, modelo: str):
     from agente_credito.state import AnalysisState, Documento, Formato
 
     docs = [Documento(nome="dossie.txt", formato=Formato.TXT, conteudo=caso["documento"])]
-    cfg = {"configurable": {"thread_id": f"paga-{caso['id']}"}}
+    cfg = config_com_tracing(
+        {"configurable": {"thread_id": f"paga-{caso['id']}"}},
+        run_name=f"eval-{caso['id']}",
+        metadata={"langfuse_session_id": f"paga-{caso['id']}"},
+    )
     with sqlite_checkpointer(":memory:") as cp:
         app = build_real_graph(checkpointer=cp, model=modelo)
         app.invoke(AnalysisState(documentos=docs), cfg)

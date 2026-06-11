@@ -24,6 +24,7 @@ from langgraph.types import Command
 
 import scenarios
 from agente_credito.graph import build_demo_graph, build_real_graph
+from agente_credito.observability import config_com_tracing
 from agente_credito.persistence import sqlite_checkpointer
 from agente_credito.state import AnalysisState, DadosExtraidos, Documento, Formato
 
@@ -109,7 +110,11 @@ def _rodar() -> None:
     st.session_state.thread_id = tid
     st.session_state.docs = [d.model_dump(mode="json") for d in docs]
     st.session_state.progresso = []
-    cfg = {"configurable": {"thread_id": tid}}
+    cfg = config_com_tracing(
+        {"configurable": {"thread_id": tid}},
+        run_name=f"streamlit-{st.session_state.get('modo') or 'demo'}",
+        metadata={"langfuse_session_id": tid},
+    )
 
     with sqlite_checkpointer(st.session_state.db) as cp:
         app = _construir_app(cp)
@@ -128,7 +133,11 @@ def _rodar() -> None:
 
 
 def _decidir(decisao: str) -> None:
-    cfg = {"configurable": {"thread_id": st.session_state.thread_id}}
+    cfg = config_com_tracing(
+        {"configurable": {"thread_id": st.session_state.thread_id}},
+        run_name="streamlit-decisao",
+        metadata={"langfuse_session_id": st.session_state.thread_id},
+    )
     with sqlite_checkpointer(st.session_state.db) as cp:
         app = _construir_app(cp)
         final = app.invoke(

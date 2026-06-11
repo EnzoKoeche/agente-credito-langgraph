@@ -160,3 +160,20 @@ Espelha o log do Notion. Datas absolutas.
 
 ### Próximo passo
 - Opcional: Langfuse (tracing) e screenshot da demo no README.
+
+---
+
+## 2026-06-11 — Observabilidade: Langfuse opcional com mask de PII
+
+### O que foi feito
+- **`src/agente_credito/observability.py`:** tracing por run via Langfuse — nós do grafo, latência, tokens/custo do LLM, versão de prompt/modelo como metadados, `thread_id` como sessão. **No-op sem as chaves** (`LANGFUSE_PUBLIC_KEY/SECRET_KEY`): sem rede, config devolvido intacto, import lazy.
+- **PII nunca sai do processo:** cliente criado com `mask` fail-closed reusando `security/pii.mascarar_pii` — Pydantic vira dict mascarado, tipo desconhecido vira string mascarada, exceção vira marcador.
+- **Fiação:** `app/streamlit_app.py` (`_rodar`/`_decidir`, sessão = thread_id) e `eval/runner_paga.py` (`eval-<caso>`). Deps pinadas: `langfuse 4.7.1` + `langchain 1.3.7` (exigido pela integração). README ganhou seção "Observabilidade (Langfuse)"; `.env.example` documentado.
+- **Revisão contra o SDK instalado pegou 2 bugs antes do commit:** (1) o cliente chama `mask(data=...)` por keyword — assinatura posicional daria TypeError e traces 100% mascarados; (2) o mask recebe o dado **cru, pré-serialização** (`span.py`), então objetos Pydantic com CPF passariam inalterados — corrigido com o masker fail-closed. Verificado também: `langfuse_session_id`/`langfuse_tags` honrados e flush via `atexit` (evals curtas não perdem traces).
+- **Suite: 72 verdes + 1 skipped (opt-in pago)** — 8 testes novos de observabilidade. Boot do Streamlit limpo com a fiação.
+
+### Caveat honesto
+- Tracing fim-a-fim com chaves reais não foi exercitado (sem conta Langfuse configurada); o que está verificado é o contrato com o SDK (assinatura/fluxo do mask, metadata, atexit) + no-op sem chaves.
+
+### Próximo passo
+- Opcional: criar projeto no cloud.langfuse.com, preencher as chaves no `.env` e olhar um trace real; screenshot da demo no README.

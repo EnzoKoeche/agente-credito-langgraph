@@ -84,6 +84,16 @@ Evals **pagas** (LLM real, com guard de custo) — `python eval/run_paga.py --sa
 
 **Caveats honestos:** o gabarito das evals determinísticas é derivado das próprias regras (oracle independente em [`eval/oracle.py`](eval/oracle.py)) → prova **regressão/consistência**, não correção independente; onde oracle e produção coincidem por construção (Price, limiar de confiança) isso está documentado. As evals pagas exercitam o LLM real, mas sobre documentos sintéticos limpos — é um piso, não um teto.
 
+## Observabilidade (Langfuse) — opcional
+
+Tracing por run com [Langfuse](https://langfuse.com): cada execução do grafo vira um trace com os nós percorridos, latência por nó, tokens/custo da chamada LLM e a versão de prompt/modelo como metadados; o `thread_id` agrupa execução + decisão HITL numa mesma sessão. **Sem as chaves é no-op** — nada é enviado e o grafo roda exatamente igual (os testes não exigem Langfuse).
+
+1. Crie um projeto gratuito em [cloud.langfuse.com](https://cloud.langfuse.com) e copie as chaves.
+2. Preencha no `.env`: `LANGFUSE_PUBLIC_KEY`, `LANGFUSE_SECRET_KEY` (e `LANGFUSE_HOST`, se self-hosted).
+3. Rode o front ou as evals pagas — os traces aparecem nomeados por run (`streamlit-demo`, `eval-...`).
+
+**PII nunca sai do processo em claro:** o cliente Langfuse é criado com `mask` ligado ao [`security/pii.py`](src/agente_credito/security/pii.py) — CPF, e-mail, telefone são mascarados antes do envio, o mesmo invariante (RF-11) da trilha de auditoria.
+
 ## Documentação (Fase 0)
 
 | Doc | Conteúdo |
