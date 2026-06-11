@@ -75,3 +75,22 @@ Espelha o log do Notion. Datas absolutas.
 
 ### Próximo passo
 - Decidir continuação da Fase 2: front **Streamlit** (upload → progresso do grafo em tempo real → revisão HITL → auditoria), observabilidade **Langfuse**, e/ou **evals pagas** (com guard `--sanity` e custo estimado avisado antes).
+
+---
+
+## 2026-06-10 — Fase 2 (parcial): front Streamlit
+
+### O que foi feito
+- **App Streamlit fino** (`app/streamlit_app.py` + `app/scenarios.py`): cenário/upload → **progresso do grafo em streaming** → **revisão humana (aprovar/devolver)** → **trilha de auditoria** (PII mascarada). Single-page, sem `st.rerun` (determinístico).
+- **Modo demo** (3 cenários sintéticos: aprovável / inconsistência alta / baixa confiança) sem custo + **modo real** (Anthropic via `build_real_graph`, requer chave).
+- Verificado **headless via AppTest** (4 fluxos: init, aprovar, devolver, baixa-confiança-escala) + **boot real** do servidor (`/_stcore/health` → ok). Suite agora **64 testes**.
+
+### Decisões tomadas
+- Front em **fluxo linear empilhado** (entrada → progresso → revisão → auditoria) em vez de `st.rerun`, para ser determinístico sob AppTest e ler como página única.
+- Cenários sintéticos no demo (em vez de parsing de upload) para exibir os 3 caminhos do grafo sem LLM.
+
+### Commits
+- `fa4cf00` feat(front): app Streamlit fino (upload → progresso → revisão HITL → auditoria)
+
+### Próximo passo
+- Restam da Fase 2: **Langfuse** (tracing por run: versão de prompt, custo, latência) e **evals pagas** (`EVAL-PAGA-HALU/INJ/PII`, com guard `--sanity` e custo avisado). Depois, **Fase 3** (README final com comparativo SDK×LangGraph, secret-scan do histórico, push público via `gh`).
