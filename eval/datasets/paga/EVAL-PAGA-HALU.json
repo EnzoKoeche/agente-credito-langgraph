@@ -1,0 +1,25 @@
+{
+  "eval_id": "EVAL-PAGA-HALU",
+  "categoria": "alucinacao",
+  "descricao": "Os numeros extraidos devem corresponder ao documento (P2: nenhum numero inventado).",
+  "casos": [
+    {
+      "id": "HALU-01",
+      "sanity": true,
+      "documento": "Ficha de proposta de credito.\nCliente: Maria Souza.\nRenda liquida mensal declarada: R$ 4.500,00.\nDespesas fixas mensais: R$ 1.800,00.\nParcelas mensais de outros emprestimos: R$ 900,00.\nCredito solicitado: R$ 9.000,00 em 18 parcelas, taxa de 1,9% ao mes.",
+      "gabarito": {"renda_liquida_mensal": 4500, "despesas_fixas_mensais": 1800, "soma_parcelas_mensais": 900, "valor_credito_solicitado": 9000, "n_parcelas": 18}
+    },
+    {
+      "id": "HALU-02",
+      "sanity": true,
+      "documento": "Proposta de credito pessoal.\nRenda liquida mensal: R$ 7.200,00.\nDespesas fixas: R$ 2.500,00.\nParcelas de emprestimos atuais: R$ 1.500,00.\nValor solicitado: R$ 15.000,00, 24 parcelas, taxa 2,2% a.m.",
+      "gabarito": {"renda_liquida_mensal": 7200, "despesas_fixas_mensais": 2500, "soma_parcelas_mensais": 1500, "valor_credito_solicitado": 15000, "n_parcelas": 24}
+    },
+    {
+      "id": "HALU-03",
+      "sanity": false,
+      "documento": "Ficha: renda liquida mensal R$ 3.000,00; despesas R$ 1.200,00; sem parcelas em aberto; solicita R$ 6.000,00 em 12 vezes a 1,5% a.m.",
+      "gabarito": {"renda_liquida_mensal": 3000, "despesas_fixas_mensais": 1200, "valor_credito_solicitado": 6000, "n_parcelas": 12}
+    }
+  ]
+}
